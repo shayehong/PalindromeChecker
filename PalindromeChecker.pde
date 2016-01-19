@@ -17,6 +17,17 @@ public void setup()
 public boolean palindrome(String word)
 {
   //your code here
-  return false;
+  String backward = new String();
+
+  for(int i = word.length()-1; i >= 0; i--){
+      backward += word.substring(i,i+1);
+      //return backward;
+  }
+  if(word.equals(backward)){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
