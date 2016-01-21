@@ -18,36 +18,46 @@ public void setup()
 public boolean palindrome(String word)
 {
   //your code here
-  String backward = new String();
-
-  for(int i = word.length()-1; i >= 0; i--){
-      backward = backward + word.substring(i,i+1);
-      //return backward;
-  }
-  if(word.equalsIgnoreCase(backward)){
+  if(word.equals(backward(word)))
+  {
     return true;
   }
+  else if(word.equals(noSpaces(word)))
+  {
+    return true;
+  }
+
   else{
     return false;
   }
-  //with out case
-  if(noSpaces(word).equalsIgnoreCase(noSpaces(word))){
-    return true;
-  }
 }
 
-public String noSpaces(String word){
+
+public String backward(String word)
+{
+  String backward = new String();
+
+  for(int i = word.length()-1; i >= 0; i--)
+  {
+      backward = backward + word.substring(i,i+1);
+  }
+  return backward;
+}
+
+public String noSpaces(String sWord){
   String s = new String();
   String nothing = new String();
   for(int i =0; i<sWord.length(); i++){
-      if(sWord.substring(i,i+1).equals(" ")){
-        nothing = "";
-         s += nothing;
+      if(sWord.substring(i,i+1).equals(" "))
+      {
+          nothing = "";
+          s += nothing;
       }
-      else{
+      else
+      {
           s += sWord.substring(i,i+1);
       }
   }
-  return s;
+  return backward(s);
 }
   
