@@ -18,15 +18,18 @@ public void setup()
 public boolean palindrome(String word)
 {
   //your code here
-  if(word.equals(backward(word)))
+  if(word.equalsIgnoreCase(backward(word)))
   {
     return true;
   }
-  else if(word.equals(noSpaces(word)))
+  else if(noSpaces(word).equalsIgnoreCase(noSpaces(backward(word))))
   {
     return true;
   }
-
+  else if(allLetters(word).equalsIgnoreCase(allLetters(backward(word))))
+  {
+    return true;
+  }
   else{
     return false;
   }
@@ -48,7 +51,7 @@ public String noSpaces(String sWord){
   String s = new String();
   String nothing = new String();
   for(int i =0; i<sWord.length(); i++){
-      if(sWord.substring(i,i+1).equals(" "))
+      if(sWord.substring(i,i+1).equals(" ") || sWord.substring(i,i+1).equals(" ") )
       {
           nothing = "";
           s += nothing;
@@ -61,3 +64,18 @@ public String noSpaces(String sWord){
   return backward(s);
 }
   
+public String allLetters(String sString){
+  String allLet = new String();
+  String nothing = new String();
+  for(int i = 0; i<sString.length(); i++){
+      if(Character.isLetter(sString.charAt(i)) == false){
+        nothing = "";
+        allLet +=  nothing;
+      }
+      else{
+        allLet += sString.charAt(i);  
+
+      }
+  }
+  return allLet;
+}
